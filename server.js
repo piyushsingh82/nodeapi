@@ -6,7 +6,7 @@ require("./connection");
 const Userdata = require("./userschema");
 const userData = require("./userschema");
 const app = express();
-const port = process.evn.PORT || 3001;
+
 
 app.use(express.json());
 const jwtkey = "samplejsonwebtoken";
@@ -138,6 +138,6 @@ function verifytoken(req, res, next) {
   }
 }
 
-app.listen(port, () => {
-  console.log("listening on port 3001...");
+app.listen((process.env.PORT ), () => {
+  console.log(`listening on port ${process.env.PORT}...`);
 });
