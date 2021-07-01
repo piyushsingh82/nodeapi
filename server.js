@@ -6,6 +6,7 @@ require("./connection");
 const Userdata = require("./userschema");
 const userData = require("./userschema");
 const app = express();
+const port = process.evn.PORT || 3001;
 
 app.use(express.json());
 const jwtkey = "samplejsonwebtoken";
@@ -114,7 +115,7 @@ app.delete("/api/deleteuser/:emailid", async (req, res) => {
       }
     );
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(error);  
   }
 });
 
@@ -137,6 +138,6 @@ function verifytoken(req, res, next) {
   }
 }
 
-app.listen(3001, () => {
+app.listen(port, () => {
   console.log("listening on port 3001...");
 });
